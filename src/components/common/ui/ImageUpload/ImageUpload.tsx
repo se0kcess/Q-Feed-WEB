@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { FaCloudUploadAlt, FaTrashAlt } from 'react-icons/fa';
+import { FaImage, FaTrashAlt } from 'react-icons/fa';
 
 interface ImageUploadProps {
-  onImageUpload?: (file: File) => void;
+  onImageUpload?: (file: File) => void; // 이미지 업로드 이벤트 콜백
 }
 
 export const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload }) => {
   const [preview, setPreview] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']; // 허용 MIME 타입
 
   // 파일 처리
   const processFile = (file: File) => {
+    if (!validImageTypes.includes(file.type)) {
+      setError('이미지 파일(JPEG, PNG, GIF, WEBP)만 허용됩니다.');
+      return;
+    }
+
     const reader = new FileReader();
     reader.onloadend = () => {
       setPreview(reader.result as string);
+      setError(null);
     };
     reader.readAsDataURL(file);
     onImageUpload?.(file);
@@ -39,6 +48,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload }) => {
   // 이미지 삭제
   const handleRemoveImage = () => {
     setPreview(null);
+    setError(null);
   };
 
   return (
@@ -53,17 +63,19 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload }) => {
           </PreviewContainer>
         ) : (
           <Placeholder>
-            <FaCloudUploadAlt size="3rem" color="#aaa" />
+            <FaImage size="3rem" color="#aaa" />
             <input type="file" accept="image/*" onChange={handleFileChange} />
           </Placeholder>
         )}
       </UploadBox>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   );
 };
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -139,4 +151,10 @@ const RemoveButton = styled.button`
   svg {
     color: #f44336;
   }
+`;
+
+const ErrorMessage = styled.p`
+  margin-top: 1rem;
+  color: #f44336;
+  font-size: 0.875rem;
 `;
