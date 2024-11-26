@@ -84,7 +84,7 @@ const iconButtonStyle = css`
   svg {
     font-size: 18px;
     color: black;
-
+  }
 `;
 
 export default SearchInput;
