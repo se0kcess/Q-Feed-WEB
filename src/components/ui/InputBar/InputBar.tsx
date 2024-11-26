@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React, { useState } from "react";
+import React from "react";
 import { CiSearch } from "react-icons/ci";
 
 interface SearchInputProps {
@@ -12,21 +12,9 @@ const SearchInput: React.FC<SearchInputProps> = ({
   placeholder = "사용자의 닉네임을 검색해보세요.", // 기본 플레이스홀더
   onSearch,
 }) => {
-  const [value, setValue] = useState("");
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && onSearch) {
-      onSearch(value); // Enter 키를 누르면 검색 이벤트 실행
-    }
-  };
-
-  const handleIconClick = () => {
     if (onSearch) {
-      onSearch(value); // 돋보기 아이콘 클릭 시 검색 이벤트 실행
+      onSearch(e.target.value); // 입력 값 변경 시 즉시 검색 이벤트 실행
     }
   };
 
@@ -36,13 +24,11 @@ const SearchInput: React.FC<SearchInputProps> = ({
         type="text"
         css={inputStyle}
         placeholder={placeholder}
-        value={value}
-        onChange={handleInputChange}
-        onKeyDown={handleKeyPress}
+        onChange={handleInputChange} // 입력 시 바로 onSearch 호출
       />
-      <button css={iconButtonStyle} onClick={handleIconClick}>
+      <div css={iconButtonStyle}>
         <CiSearch />
-      </button>
+      </div>
     </div>
   );
 };
@@ -74,13 +60,10 @@ const inputStyle = css`
 
 // 돋보기 버튼 스타일
 const iconButtonStyle = css`
-  border: none;
-  padding: 8px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-
+  padding: 8px;
   svg {
     font-size: 18px;
     color: black;

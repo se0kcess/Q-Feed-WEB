@@ -1,10 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React from "react";
-import ProfileImageCon from "../../components/ui/ProfileImageCon/ProfileImageCon"; // 프로필 이미지 컴포넌트
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ProfileImageCon from "../../components/ui/ProfileImageCon/ProfileImageCon";
 import InputBar from "../../components/ui/InputBar/InputBar";
 
 interface ChatItemProps {
+  id: string; // 채팅방 ID
   profileImg?: string; // 프로필 이미지 URL
   userName: string; // 사용자 이름
   lastMessage: string; // 마지막 메시지
@@ -14,14 +16,21 @@ interface ChatItemProps {
 
 // 채팅 리스트 아이템 컴포넌트
 const ChatItem: React.FC<ChatItemProps> = ({
+  id,
   profileImg,
   userName,
   lastMessage,
   time,
   unreadCount,
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/chat/${id}`); // 클릭 시 채팅방으로 이동
+  };
+
   return (
-    <div css={chatItemStyle}>
+    <div css={chatItemStyle} onClick={handleClick}>
       <ProfileImageCon src={profileImg || ""} size={40} />
       <div css={chatContentStyle}>
         <div css={userNameStyle}>
@@ -41,8 +50,10 @@ const ChatItem: React.FC<ChatItemProps> = ({
 
 // 채팅 리스트 메인 컴포넌트
 const ChatList: React.FC = () => {
-  const chatData = [
+  const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태
+  const [chatData] = useState([
     {
+      id: "1",
       profileImg: "",
       userName: "백종원",
       lastMessage: "마지막 대화 내용 어쩌구저쩌구",
@@ -50,28 +61,41 @@ const ChatList: React.FC = () => {
       unreadCount: 3,
     },
     {
+      id: "2",
       profileImg: "",
-      userName: "백종원",
-      lastMessage: "마지막 대화 내용 어쩌구저쩌구",
-      time: "13:18",
+      userName: "홍길동",
+      lastMessage: "여긴 새로운 메시지가 있어요!",
+      time: "14:25",
       unreadCount: 10,
     },
     {
+      id: "3",
       profileImg: "",
-      userName: "백종원",
-      lastMessage: "마지막 대화 내용 어쩌구저쩌구",
-      time: "13:18",
+      userName: "이순신",
+      lastMessage: "반갑습니다.",
+      time: "15:00",
     },
-  ];
+  ]);
+
+  // 검색어를 기준으로 채팅 리스트 필터링
+  const filteredChatData = chatData.filter((chat) =>
+    chat.userName.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value); // 검색어 상태 업데이트
+  };
 
   return (
     <div css={chatListContainerStyle}>
       {/* 검색 인풋 */}
-      <InputBar placeholder="검색어를 입력하세요" />
+      <InputBar
+        placeholder="검색어를 입력하세요"
+        onSearch={handleSearchChange}
+      />
       {/* 채팅 리스트 */}
       <div css={chatListStyle}>
-        {chatData.map((chat, index) => (
-          <ChatItem key={index} {...chat} />
+        {filteredChatData.map((chat) => (
+          <ChatItem key={chat.id} {...chat} />
         ))}
       </div>
     </div>
@@ -95,6 +119,11 @@ const chatItemStyle = css`
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #eee;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
 `;
 
 const chatContentStyle = css`
