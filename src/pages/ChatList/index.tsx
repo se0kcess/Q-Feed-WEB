@@ -55,7 +55,7 @@ const ChatList: React.FC = () => {
     {
       id: "1",
       profileImg: "",
-      userName: "백종원",
+      userName: "asdf",
       lastMessage: "마지막 대화 내용 어쩌구저쩌구",
       time: "13:18",
       unreadCount: 3,
@@ -107,22 +107,23 @@ export default ChatList;
 // 스타일 정의
 const chatListContainerStyle = css`
   padding: 0;
+  height: 773px;
 `;
-
 const chatListStyle = css`
-  margin-top: 10px;
+  height: 773px;
   background-color: #f3ebe0;
+  border-bottom: 1px solid #ccc;
 `;
 
 const chatItemStyle = css`
   display: flex;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 0.5px solid #ccc;
   cursor: pointer;
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: #f0e8dc;
   }
 `;
 
