@@ -1,4 +1,5 @@
 import RootLayout from '@/components/RootLayout';
+import Login from '@/pages/Login';
 import ChatList from '@/pages/ChatList';
 import Main from '@/pages/Main';
 import MyPage from '@/pages/MyPage';
@@ -11,7 +12,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: '', // 홈 페이지
+        path: '/',
         element: <Main />,
       },
       {
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
         path: '/qspace', // 홈 페이지
         element: <QSpaceMainPage />,
       },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+
     ],
   },
 ]);
