@@ -1,37 +1,32 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { CiUser } from 'react-icons/ci';
 import theme from '@/styles/theme';
 
-interface QSpaceProps {
+interface QSpaceCardProps {
   imageUrl: string; // 이미지 URL
   title: string; // 제목
   description: string; // 소개글
   memberCount: number; // 멤버 수
   isRecruiting: boolean; // 모집 상태
   lastUpdated: string; // 마지막 업데이트 시간
-  onClick?: () => void; // QSpace 클릭 시 실행 함수
 }
 
-export const QSpace: React.FC<QSpaceProps> = ({
+export const QSpaceCard = ({
   imageUrl,
   title,
   description,
   memberCount,
   isRecruiting,
   lastUpdated,
-  onClick,
-}) => {
+}: QSpaceCardProps) => {
   return (
-    <Container onClick={onClick}>
+    <Container>
       <Content>
         <ImageContainer>
           <Image src={imageUrl} alt={title} />
         </ImageContainer>
         <TextContainer>
-          <RecruitingStatus isRecruiting={isRecruiting}>
-            {isRecruiting ? '모집중' : '모집 완료'}
-          </RecruitingStatus>
+          <RecruitingStatus isRecruiting={isRecruiting}>{isRecruiting ? '모집중' : '모집 완료'}</RecruitingStatus>
           <Title>{title}</Title>
           <Description>{description}</Description>
         </TextContainer>
@@ -39,7 +34,7 @@ export const QSpace: React.FC<QSpaceProps> = ({
       <Divider />
       <Footer>
         <Members>
-          <CiUser size="1rem" />
+          <CiUser size='1rem' />
           <MemberCount>{memberCount}</MemberCount>
         </Members>
         <LastUpdated>{lastUpdated}</LastUpdated>
@@ -57,12 +52,6 @@ const Container = styled.div`
   background-color: ${theme.colors.white};
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   gap: 0.5rem;
-  cursor: pointer; /* 클릭 가능한 영역임을 나타냄 */
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: ${theme.colors.gray[100]}; /* 호버 시 약간의 배경색 변화 */
-  }
 `;
 
 const Content = styled.div`
@@ -97,8 +86,7 @@ const RecruitingStatus = styled.span<{ isRecruiting: boolean }>`
   font-size: 0.75rem;
   font-weight: bold;
   color: ${({ isRecruiting }) => (isRecruiting ? theme.colors.textYellow : theme.colors.gray[300])};
-  background-color: ${({ isRecruiting }) =>
-    isRecruiting ? theme.colors.yellow : theme.colors.gray[100]};
+  background-color: ${({ isRecruiting }) => (isRecruiting ? theme.colors.yellow : theme.colors.gray[100])};
   width: fit-content;
 `;
 
