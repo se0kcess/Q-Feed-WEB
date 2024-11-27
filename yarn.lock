@@ -2476,7 +2476,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/utils@npm:2.0.15":
+"@chakra-ui/utils@npm:2.0.15, @chakra-ui/utils@npm:~2.0.9":
   version: 2.0.15
   resolution: "@chakra-ui/utils@npm:2.0.15"
   dependencies:
@@ -5391,6 +5391,18 @@ __metadata:
     loupe: "npm:^3.1.0"
     pathval: "npm:^2.0.0"
   checksum: 10c0/6c04ff8495b6e535df9c1b062b6b094828454e9a3c9493393e55b2f4dbff7aa2a29a4645133cad160fb00a16196c4dc03dc9bb37e1f4ba9df3b5f50d7533a736
+  languageName: node
+  linkType: hard
+
+"chakra-ui-bottom-navigation@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "chakra-ui-bottom-navigation@npm:2.0.1"
+  dependencies:
+    "@chakra-ui/utils": "npm:~2.0.9"
+  peerDependencies:
+    "@chakra-ui/react": ^2.0.0
+    react: ">=16.8.1"
+  checksum: 10c0/9c1de7ab32eec26fcea0414346e8034eee9d5442c898b111be39f0c1856c81badd5a641b4ac02a8206827ab6aaac92fb10d411eff9bbf93ced55f2534488b439
   languageName: node
   linkType: hard
 
@@ -11053,6 +11065,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^7.8.0"
     "@vite-pwa/assets-generator": "npm:^0.2.4"
     "@vitejs/plugin-react": "npm:^4.2.1"
+    chakra-ui-bottom-navigation: "npm:^2.0.1"
     commitlint: "npm:^19.6.0"
     eslint: "npm:^8.57.0"
     eslint-plugin-react-hooks: "npm:^4.6.2"
