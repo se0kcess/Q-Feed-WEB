@@ -81,10 +81,22 @@ const ChatRoom: React.FC = () => {
             css={msg.isMine ? myMessageStyle : otherMessageStyle}
           >
             {!msg.isMine && <ProfileImageCon src="" size={30} />}
-            <div css={messageContentStyle}>
-              <p>{msg.text}</p>
-              <span css={timeStyle}>{msg.time}</span>
-            </div>
+            {/* 삼항연산자로 메시지 구조 분리 */}
+            {msg.isMine ? (
+              <>
+                <span css={timeStyleLeft}>{msg.time}</span>
+                <div css={messageContentStyle}>
+                  <p>{msg.text}</p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div css={messageContentStyle}>
+                  <p>{msg.text}</p>
+                </div>
+                <span css={timeStyleRight}>{msg.time}</span>
+              </>
+            )}
           </div>
         ))}
       </div>
@@ -145,12 +157,14 @@ const otherMessageStyle = css`
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
+  gap: 10px; /* 프로필 이미지와 메시지 사이 간격 */
 `;
 
 const myMessageStyle = css`
   display: flex;
   justify-content: flex-end;
   margin-bottom: 10px;
+  gap: 10px; /* 메시지와 시간 간 간격 */
 `;
 
 const messageContentStyle = css`
@@ -162,12 +176,18 @@ const messageContentStyle = css`
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 `;
 
-const timeStyle = css`
-  display: block;
-  margin-top: 5px;
+const timeStyleLeft = css`
   font-size: 12px;
   color: #999999;
-  text-align: right;
+  align-self: flex-end;
+  margin-left: 10px; /* 메시지와 시간 간 간격 */
+`;
+
+const timeStyleRight = css`
+  font-size: 12px;
+  color: #999999;
+  align-self: flex-end;
+  margin-right: 10px; /* 메시지와 시간 간 간격 */
 `;
 
 const inputBarContainerStyle = css`
