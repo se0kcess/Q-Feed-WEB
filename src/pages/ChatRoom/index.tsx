@@ -3,10 +3,10 @@ import { css } from "@emotion/react";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import ProfileImageCon from "../../components/ui/ProfileImageCon/ProfileImageCon";
-import InputBar from "../../components/ui/InputBar/InputBar";
 import { HiOutlineBell } from "react-icons/hi2";
 import { HiOutlineBellSlash } from "react-icons/hi2";
 import { IoChevronBack } from "react-icons/io5";
+import ChatInputBar from "@/pages/ChatRoom/component/InputBar";
 
 const ChatRoom: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -25,37 +25,30 @@ const ChatRoom: React.FC = () => {
       time: "13:18",
       isMine: true,
     },
-    {
-      id: 3,
-      sender: "백종원",
-      text: "삼일시장 최고",
-      time: "13:21",
-      isMine: false,
-    },
-    {
-      id: 4,
-      sender: "나",
-      text: "별 하나에 추억과 별 하나에 사랑과 별",
-      time: "13:25",
-      isMine: true,
-    },
   ]);
 
   const handleSendMessage = (message: string) => {
-    setMessages([
-      ...messages,
+    const currentTime = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+
+    setMessages((prevMessages) => [
+      ...prevMessages,
       {
         id: Date.now(),
         sender: "나",
         text: message,
-        time: "13:30",
+        time: currentTime,
         isMine: true,
       },
     ]);
   };
+
   const [isNotificationEnabled, setIsNotificationEnabled] = useState(true);
   const toggleNotification = () => {
-    setIsNotificationEnabled((prevState) => !prevState); // 상태를 반대로 토글
+    setIsNotificationEnabled((prevState) => !prevState);
   };
 
   return (
@@ -102,10 +95,10 @@ const ChatRoom: React.FC = () => {
       </div>
 
       {/* Input Bar */}
-      <div css={inputBarContainerStyle}>
-        <InputBar
+      <div>
+        <ChatInputBar
           placeholder="메시지를 입력하세요."
-          onSearch={handleSendMessage} // 메시지 보내기
+          onSend={handleSendMessage} // 메시지 보내기 핸들러 전달
         />
       </div>
     </div>
@@ -188,10 +181,4 @@ const timeStyleRight = css`
   color: #999999;
   align-self: flex-end;
   margin-right: 10px; /* 메시지와 시간 간 간격 */
-`;
-
-const inputBarContainerStyle = css`
-  padding: 10px;
-  background-color: #ffffff;
-  border-top: 1px solid #e0e0e0;
 `;
