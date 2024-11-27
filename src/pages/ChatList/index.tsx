@@ -31,7 +31,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
 
   return (
     <div css={chatItemStyle} onClick={handleClick}>
-      <ProfileImageCon src={profileImg || ""} size={40} />
+      <ProfileImageCon src={profileImg || ""} size={60} />
       <div css={chatContentStyle}>
         <div css={userNameStyle}>
           <span>{userName}</span>
