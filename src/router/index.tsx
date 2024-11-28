@@ -5,6 +5,7 @@ import Main from '@/pages/Main';
 import MyPage from '@/pages/MyPage';
 import QSpaceMainPage from '@/pages/QSpaceMain';
 import CategorySelectPage from '@/pages/QSpacePost/CategorySelectPage';
+import QuestionPage from '@/pages/Question';
 import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />,
+      },
+      {
+        path: 'questions/:category',
+        element: <QuestionPage />,
       },
     ],
   },
