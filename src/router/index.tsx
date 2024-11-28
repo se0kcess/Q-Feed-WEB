@@ -7,6 +7,8 @@ import QSpaceMainPage from '@/pages/QSpaceMain';
 import CategorySelectPage from '@/pages/QSpacePost/CategorySelectPage';
 import { createBrowserRouter } from 'react-router-dom';
 import PostGroupPage from '@/pages/QSpacePost/PostGroupPage';
+import SelectPage from '@/pages/Select';
+
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
         path: '/login',
         element: <Login />,
       },
+      {
+        path: '/select',
+        element: <SelectPage />,
+      }
     ],
   },
 ]);
