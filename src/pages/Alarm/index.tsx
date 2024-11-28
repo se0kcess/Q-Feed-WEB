@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React from "react";
+import React, { useState } from "react";
 import { IoChevronBack } from "react-icons/io5";
 
 interface NotificationItem {
@@ -50,6 +50,16 @@ const NotificationPage: React.FC = () => {
     },
   ];
 
+  const [readItems, setReadItems] = useState<number[]>([]); // 읽음 처리된 알림 ID 저장
+
+  const handleItemClick = (id: number) => {
+    setReadItems((prev) => (prev.includes(id) ? prev : [...prev, id]));
+  };
+
+  const markAllAsRead = () => {
+    setReadItems(notifications.map((notification) => notification.id));
+  };
+
   return (
     <div css={containerStyle}>
       {/* Header */}
@@ -60,14 +70,25 @@ const NotificationPage: React.FC = () => {
 
       {/* Unread count */}
       <div css={readWrap}>
-        <div css={unreadCountStyle}>안읽은 알림 {notifications.length}개</div>
-        <span css={markAllAsReadStyle}>모두 읽음 표시</span>
+        <div css={unreadCountStyle}>
+          안읽은 알림 {notifications.length - readItems.length}개
+        </div>
+        <span css={markAllAsReadStyle} onClick={markAllAsRead}>
+          모두 읽음 표시
+        </span>
       </div>
 
       {/* Notification List */}
       <div css={listStyle}>
         {notifications.map((notification) => (
-          <div css={listCon}>
+          <div
+            key={notification.id}
+            css={[
+              listCon,
+              readItems.includes(notification.id) && listConRead, // 읽음 처리된 항목 스타일
+            ]}
+            onClick={() => handleItemClick(notification.id)}
+          >
             <div css={notificationContentStyle}>
               <span css={notificationTypeStyle}>{notification.type}</span>
               <p css={notificationMessageStyle}>{notification.message}</p>
@@ -93,8 +114,8 @@ const containerStyle = css`
 const headerStyle = css`
   display: flex;
   align-items: center;
-  justify-content: center; /* 중앙 정렬 */
-  position: relative; /* 자식 요소의 절대 위치를 기준으로 설정 */
+  justify-content: center;
+  position: relative;
   padding: 10px 15px;
   background-color: #ffffff;
   border-bottom: 1px solid #ccc;
@@ -108,8 +129,8 @@ const readWrap = css`
 `;
 
 const backIconStyle = css`
-  position: absolute; /* 절대 위치 */
-  left: 15px; /* 왼쪽 끝에서 15px 간격 */
+  position: absolute;
+  left: 15px;
   font-size: 24px;
   cursor: pointer;
 `;
@@ -121,10 +142,7 @@ const headerTitleStyle = css`
 
 const markAllAsReadStyle = css`
   font-size: 14px;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
+  border-radius: 16px;
   padding: 6px;
   color: #b9a298;
   background-color: #f3ebe1;
@@ -151,6 +169,11 @@ const listCon = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
+`;
+
+const listConRead = css`
+  background-color: #f9f4ef; /* 읽음 처리된 배경 색 */
 `;
 
 const notificationContentStyle = css`
