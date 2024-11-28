@@ -61,7 +61,8 @@ const Container = styled.div`
   padding: 1.5rem;
   background-color: #FFF9F4;
   width: 100%;
-  height: calc(100vh - 8.25rem);
+  min-height: calc(100vh - 8.25rem);
+  margin-bottom: 5.25rem;
 `;
 
 const TitleContainer = styled.div`
