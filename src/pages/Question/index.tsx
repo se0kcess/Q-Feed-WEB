@@ -122,7 +122,7 @@ const LockButton = styled.button<{ isPrivate: boolean }>`
   border: 1px solid ${({ isPrivate }) => (isPrivate ? '#FF480E' : '#00796B')};
   color: ${theme.colors.black};
   border-radius: 0.875rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.75rem;
   font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s;
