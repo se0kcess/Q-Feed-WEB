@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import React, { useState } from "react";
 import { IoChevronBack } from "react-icons/io5";
-
+import ProfileImage from "@/components/ui/ProfileImageCon/ProfileImageCon";
 interface NotificationItem {
   id: number;
   type: string;
@@ -89,6 +89,7 @@ const NotificationPage: React.FC = () => {
             ]}
             onClick={() => handleItemClick(notification.id)}
           >
+            <ProfileImage src="" size={40} />
             <div css={notificationContentStyle}>
               <span css={notificationTypeStyle}>{notification.type}</span>
               <p css={notificationMessageStyle}>{notification.message}</p>
@@ -178,6 +179,7 @@ const listConRead = css`
 
 const notificationContentStyle = css`
   flex: 1;
+  margin-left: 8px;
 `;
 
 const notificationTypeStyle = css`
