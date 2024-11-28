@@ -4,7 +4,7 @@ import { LuImagePlus, LuImageOff } from 'react-icons/lu';
 import theme from '@/styles/theme';
 
 interface ImageUploadProps {
-  onImageUpload?: (file: File) => void; // 이미지 업로드 이벤트 콜백
+  onImageUpload?: (file: File | null) => void; // 이미지 업로드 이벤트 콜백
 }
 
 export const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload }) => {
@@ -46,6 +46,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload }) => {
     if (preview) {
       setPreview(null);
       setError(null);
+      onImageUpload?.(null);
     }
   };
 
@@ -88,7 +89,7 @@ const UploadBox = styled.div<{ hasPreview: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 23.562rem;
+  width: 100%;
   height: 16.25rem;
   border: ${({ hasPreview }) => (hasPreview ? '0.125rem solid' : '0.125rem dashed')} ${theme.colors.primary};
   border-radius: 1rem;
