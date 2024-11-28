@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoChevronBack } from "react-icons/io5";
 import ProfileImage from "@/components/ui/ProfileImageCon/ProfileImageCon";
 interface NotificationItem {
@@ -11,6 +12,7 @@ interface NotificationItem {
 }
 
 const NotificationPage: React.FC = () => {
+  const navigate = useNavigate();
   const notifications: NotificationItem[] = [
     {
       id: 1,
@@ -64,7 +66,7 @@ const NotificationPage: React.FC = () => {
     <div css={containerStyle}>
       {/* Header */}
       <div css={headerStyle}>
-        <IoChevronBack css={backIconStyle} />
+        <IoChevronBack css={backIconStyle} onClick={() => navigate(-1)} />
         <span css={headerTitleStyle}>알림</span>
       </div>
 
