@@ -130,16 +130,36 @@ const LockButton = styled.button<{ isPrivate: boolean }>`
 
 const Input = styled.textarea`
   width: 100%;
+  height: 7rem;
   border: 1px solid ${theme.colors.gray[300]};
-  border-radius: 0.5rem;
   padding: 0.875rem;
-  font-size: 0.875rem;
   resize: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
   outline: none;
   font-family: ${theme.typography.fontFamily.korean};
+  color: ${theme.colors.primary};
 
   &:focus {
     border-color: ${theme.colors.primary};
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${theme.colors.primary};
+    border-radius: 0.25rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: ${theme.colors.gray[500]};
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: ${theme.colors.gray[100]};
+    border-radius: 0.25rem;
   }
 `;
 
