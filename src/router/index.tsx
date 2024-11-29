@@ -9,7 +9,7 @@ import NotificationPage from '@/pages/Alarm';
 import PostGroupPage from '@/pages/QSpacePost/PostGroupPage';
 import { createBrowserRouter } from 'react-router-dom';
 import { LandingPage } from '@/pages/Landing';
-
+import ChatRoom from '@/pages/ChatRoom';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -28,10 +28,10 @@ const router = createBrowserRouter([
         element: <MyPage />,
       },
       {
-      {
         path: '/landing', //랜딩페이지
         element: <LandingPage />,
       },
+      {
         path: '/qspace',
         element: <QSpaceMainPage />,
       },
@@ -50,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: '/alarm',
         element: <NotificationPage />,
+      },
+      {
+        path: '/chatroom/:id',
+        element: <ChatRoom />,
       },
     ],
   },

@@ -26,7 +26,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/chat/${id}`); // 클릭 시 채팅방으로 이동
+    navigate(`/chatroom/${id}`); // 클릭 시 채팅방으로 이동
   };
 
   return (
@@ -105,8 +105,8 @@ const chatListContainerStyle = css`
   height: 773px;
 `;
 const chatListStyle = css`
-  height: 773px;
-  background-color: #f3ebe0;
+  height: 100vh;
+  background-color: #f9f3ec;
   border-bottom: 1px solid #ccc;
 `;
 

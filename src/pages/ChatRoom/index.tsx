@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ProfileImageCon from '../../components/ui/ProfileImageCon/ProfileImageCon';
 import { HiOutlineBell } from 'react-icons/hi2';
 import { HiOutlineBellSlash } from 'react-icons/hi2';
@@ -10,6 +11,7 @@ import ChatInputBar from '@/pages/ChatRoom/component/InputBar';
 
 const ChatRoom: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -55,7 +57,7 @@ const ChatRoom: React.FC = () => {
     <div css={chatRoomContainer}>
       {/* Header */}
       <div css={headerStyle}>
-        <IoChevronBack />
+        <IoChevronBack css={backIconStyle} onClick={() => navigate(-1)} />
         <span css={headerTitle}>{id} 백종원</span>
         <button css={iconButtonStyle} onClick={toggleNotification}>
           {isNotificationEnabled ? (
@@ -117,8 +119,7 @@ const iconStyle = css`
 const chatRoomContainer = css`
   display: flex;
   flex-direction: column;
-  height: 773px;
-  background-color: #f9f4ef;
+  height: 100vh;
 `;
 
 const headerStyle = css`
@@ -135,12 +136,16 @@ const headerTitle = css`
   font-size: 18px;
   font-weight: bold;
 `;
+const backIconStyle = css`
+  font-size: 24px;
+  cursor: pointer;
+`;
 
 const messageListStyle = css`
   flex: 1;
   padding: 10px;
   overflow-y: auto;
-  background-color: #f3ebe0;
+  background-color: #f9f3ec;
 `;
 
 const otherMessageStyle = css`
