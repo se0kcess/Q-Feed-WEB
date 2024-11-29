@@ -8,10 +8,10 @@ import { AnswerCard } from '@/pages/Main/components/AnswerCard/AnswerCard';
 import { PopularPostSlider } from '@/pages/Main/components/PopularPostSlider/PopularPostSlider';
 import { ProfileSlider } from '@/pages/Main/components/ProfileSlider/ProfileSlider';
 import { CommentList } from '@/components/ui/CommentList/CommentList';
-import { dummyComments } from '@/pages/Main/type/dummyComments';
-import { dummyData } from '@/pages/Main/type/dummyPosts';
-import { userProfileData } from '@/pages/Main/type/dummyUserProfiles';
+import { dummyComments } from '@/mocks/dummyComments';
 import { categories } from '@/pages/Main/type/category';
+import { dummyData } from '@/mocks/dummyPosts';
+import { userProfileData } from '@/mocks/dummyUserProfiles';
 
 export const Main = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
@@ -89,7 +89,7 @@ export const Main = () => {
           date="2024.11.28"
           question="오늘 당장 해외여행을 떠날수 있다면 어디로 갈건가요!?"
         />
-        <AnswerCard answer="독일 크리스마스 마켓 구경하고싶어요🎄" />
+        <AnswerCard date="2024.11.28" answer="독일 크리스마스 마켓 구경하고싶어요🎄" />
 
         <PostWrapper>
           <Title>지금 뜨는 인기 답변</Title>
