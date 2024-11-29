@@ -7,8 +7,8 @@ import QSpaceMainPage from '@/pages/QSpaceMain';
 import CategorySelectPage from '@/pages/QSpacePost/CategorySelectPage';
 import NotificationPage from '@/pages/Alarm';
 import PostGroupPage from '@/pages/QSpacePost/PostGroupPage';
-import QuestionPage from "@/pages/Question";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from 'react-router-dom';
+import { LandingPage } from '@/pages/Landing';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +28,10 @@ const router = createBrowserRouter([
         element: <MyPage />,
       },
       {
+        path: '/landing', //랜딩페이지
+        element: <LandingPage />,
+      },
+      {
         path: '/qspace',
         element: <QSpaceMainPage />,
       },
@@ -44,12 +48,8 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: '/Alarm',
+        path: '/alarm',
         element: <NotificationPage />,
-      },
-      {
-        path: '/questions/:category',
-        element: <QuestionPage />,
       },
     ],
   },
