@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProfileImageCon from '../../components/ui/ProfileImageCon/ProfileImageCon';
 import InputBar from '../../components/ui/InputBar/InputBar';
-
+import Header from '@/components/common/Header';
 interface ChatItemProps {
   id: string; // 채팅방 ID
   profileImg?: string; // 프로필 이미지 URL
@@ -26,7 +26,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/chat/${id}`); // 클릭 시 채팅방으로 이동
+    navigate(`/chatroom/${id}`); // 클릭 시 채팅방으로 이동
   };
 
   return (
@@ -86,6 +86,7 @@ const ChatList: React.FC = () => {
   return (
     <div css={chatListContainerStyle}>
       {/* 검색 인풋 */}
+      <Header />
       <InputBar placeholder="검색어를 입력하세요" onSearch={handleSearchChange} />
       {/* 채팅 리스트 */}
       <div css={chatListStyle}>
@@ -106,7 +107,8 @@ const chatListContainerStyle = css`
 `;
 const chatListStyle = css`
   height: 100vh;
-  background-color: #f3ebe0;
+  background-color: #f9f3ec;
+
   border-bottom: 1px solid #ccc;
 `;
 
