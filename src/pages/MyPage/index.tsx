@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import Header from '@/components/common/Header';
+import Header from '@/pages/MyPage/components/Header';
 import { QSpaceCard } from '@/components/ui/QSpaceCard/QSpaceCard';
 import QuestionCard from '@/pages/MyPage/components/QuestionCard';
 import theme from '@/styles/theme';
@@ -60,7 +60,7 @@ const MyPage = () => {
 
   return (
     <>
-      <Header />
+      <Header title='마이페이지' />
       <Container>
         <MyProfile profile={profile} />
         <ButtonGroup>
