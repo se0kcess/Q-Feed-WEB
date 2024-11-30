@@ -11,6 +11,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { LandingPage } from '@/pages/Landing';
 import ChatRoom from '@/pages/ChatRoom';
 import QSpaceDetailPage from '@/pages/QSpaceDetail';
+import QuestionPage from '@/pages/Question';
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: '/chatroom/:id',
         element: <ChatRoom />,
+      },
+      {
+        path: '/question/:category',
+        element: <QuestionPage />,
       },
     ],
   },
