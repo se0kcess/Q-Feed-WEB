@@ -3,11 +3,13 @@ import theme from '@/styles/theme';
 
 type AnswerCardProps = {
   answer: string;
+  date: string;
 };
 
-export const AnswerCard = ({ answer }: AnswerCardProps) => {
+export const AnswerCard = ({ answer, date }: AnswerCardProps) => {
   return (
     <Container>
+      <DateText>{date}</DateText>
       <TextTitle>나의 답변</TextTitle>
       <TextAnswer>{answer}</TextAnswer>
     </Container>
@@ -33,6 +35,12 @@ const TextAnswer = styled.h2`
   overflow-wrap: break-word;
   white-space: pre-wrap;
   margin-top: 15px;
+`;
+
+const DateText = styled.p`
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.5rem;
 `;
 
 const Container = styled.div`
