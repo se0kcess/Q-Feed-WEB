@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import { IoMdLock, IoMdUnlock } from "react-icons/io";
+import { IoLockClosed, IoLockOpen } from "react-icons/io5";
 import { ImageUpload } from '@/components/ui/ImageUpload/ImageUpload';
 import theme from '@/styles/theme';
 import Header from '@/components/common/Header';
@@ -38,7 +38,7 @@ const QuestionPage = () => {
           <InputLabel>
             <LabelText>답변을 입력해주세요.</LabelText>
             <LockButton onClick={handleLockToggle} isPrivate={isPrivate}>
-              {isPrivate ? <IoMdLock size="1rem" /> : <IoMdUnlock size="1rem" />}
+              {isPrivate ? <IoLockClosed size="1rem" /> : <IoLockOpen size="1rem" />}
             </LockButton>
           </InputLabel>
           <Input
@@ -59,7 +59,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 1.5rem;
-  background-color: #FFF9F4;
+  background-color: ${theme.colors.background};
   width: 100%;
   min-height: calc(100vh - 8.25rem);
   margin-bottom: 5.25rem;
@@ -126,7 +126,11 @@ const LockButton = styled.button<{ isPrivate: boolean }>`
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+   scale: 1.05;
+  }
 `;
 
 const Input = styled.textarea`
@@ -180,9 +184,10 @@ const SubmitButton = styled.button`
   border-radius: 1rem;
   font-size: 1rem;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
-    background-color: #9d6f70;
+    scale: 1.02;
   }
 `;
 
