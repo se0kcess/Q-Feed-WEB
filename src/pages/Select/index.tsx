@@ -27,10 +27,13 @@ const SelectPage = () => {
 const Container = styled.div`
   width: 100%;
   padding: 2rem 1rem;
-  background-color: #FFF9F4;
+  background-color: ${theme.colors.background};
   min-height: calc(100vh - 5.25rem);
   margin-bottom: 5.25rem;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const LogoWrapper = styled.div`
@@ -38,11 +41,11 @@ const LogoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 8.75rem;
-  margin-bottom: 2.358rem;
+  margin-bottom: 2.312rem;
 `;
 
 const Title = styled.h1`
+  width: 100%;
   font-size: 1.125rem;
   font-weight: bold;
   color: ${theme.colors.primary};
