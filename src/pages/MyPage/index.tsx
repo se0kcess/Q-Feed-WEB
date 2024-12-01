@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
 import Header from '@/pages/MyPage/components/Header';
-import { QSpaceCard } from '@/components/ui/QSpaceCard/QSpaceCard';
 import QuestionCard from '@/pages/MyPage/components/QuestionCard';
 import theme from '@/styles/theme';
 import Button from '@/pages/MyPage/components/Button';
 import MyProfile from '@/pages/MyPage/components/MyProfile';
+import QSpaceCard from '@/components/ui/QSpaceCard/QSpaceCard';
 
 // 더미 데이터
 const dummyProfile = {
@@ -60,14 +60,12 @@ const MyPage = () => {
 
   return (
     <>
-      <Header title='마이페이지' />
+      <Header title="마이페이지" />
       <Container>
         <MyProfile profile={profile} />
         <ButtonGroup>
           <Button onClick={() => alert('프로필 수정 클릭')}>프로필 수정</Button>
-          <Button onClick={() => alert('프로필 공유 클릭')}>
-            프로필 공유
-          </Button>
+          <Button onClick={() => alert('프로필 공유 클릭')}>프로필 공유</Button>
         </ButtonGroup>
         <TabContainer>
           <Tab onClick={() => setActiveTab('myQuestions')} isActive={activeTab === 'myQuestions'}>
