@@ -12,6 +12,7 @@ import { LandingPage } from '@/pages/Landing';
 import ChatRoom from '@/pages/ChatRoom';
 import QSpaceDetailPage from '@/pages/QSpaceDetail';
 import QuestionPage from '@/pages/Question';
+import SelectPage from '@/pages/Select';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: '/question/:category',
         element: <QuestionPage />,
+      },
+      {
+        path: '/select',
+        element: <SelectPage />,
       },
     ],
   },
