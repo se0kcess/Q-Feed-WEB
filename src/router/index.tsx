@@ -5,10 +5,13 @@ import Main from '@/pages/Main';
 import MyPage from '@/pages/MyPage';
 import QSpaceMainPage from '@/pages/QSpaceMain';
 import CategorySelectPage from '@/pages/QSpacePost/CategorySelectPage';
-import { createBrowserRouter } from 'react-router-dom';
+import NotificationPage from '@/pages/Alarm';
 import PostGroupPage from '@/pages/QSpacePost/PostGroupPage';
-import SelectPage from '@/pages/Select';
-
+import { createBrowserRouter } from 'react-router-dom';
+import { LandingPage } from '@/pages/Landing';
+import ChatRoom from '@/pages/ChatRoom';
+import QSpaceDetailPage from '@/pages/QSpaceDetail';
+import QuestionPage from '@/pages/Question';
 
 const router = createBrowserRouter([
   {
@@ -16,16 +19,20 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: '/',
+        path: '',
         element: <Main />,
       },
       {
-        path: 'chat', // 채팅 목록
+        path: '/chat', // 채팅 목록
         element: <ChatList />,
       },
       {
         path: '/mypage', // 마이페이지
         element: <MyPage />,
+      },
+      {
+        path: '/landing', //랜딩페이지
+        element: <LandingPage />,
       },
       {
         path: '/qspace',
@@ -40,13 +47,25 @@ const router = createBrowserRouter([
         element: <PostGroupPage />,
       },
       {
+        path: '/qspace/details',
+        element: <QSpaceDetailPage />,
+      },
+      {
         path: '/login',
         element: <Login />,
       },
       {
-        path: '/select',
-        element: <SelectPage />,
-      }
+        path: '/alarm',
+        element: <NotificationPage />,
+      },
+      {
+        path: '/chatroom/:id',
+        element: <ChatRoom />,
+      },
+      {
+        path: '/question/:category',
+        element: <QuestionPage />,
+      },
     ],
   },
 ]);

@@ -2,7 +2,7 @@ import { LoginButton } from '@/pages/Login/LoginButton/LoginButton';
 import theme from '@/styles/theme';
 import { FormControl, FormErrorMessage, FormLabel, Input, Stack } from '@chakra-ui/react';
 import styled from '@emotion/styled';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 const STYLES = {
   FORM: {
@@ -92,7 +92,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
             focusBorderColor={theme.colors.primary}
             color={theme.colors.gray[300]}
             background={theme.colors.white}
-            placeholder='이메일을 입력해주세요.'
+            placeholder="이메일을 입력해주세요."
             {...register('email', {
               required: '이메일을 입력해주세요',
               pattern: {
@@ -100,7 +100,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
                 message: '올바른 이메일 형식이 아닙니다',
               },
             })}
-            type='email'
+            type="email"
           />
           <StyledFormErrorMessage>{errors.email?.message}</StyledFormErrorMessage>
         </StyledFormControl>
@@ -112,7 +112,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
             focusBorderColor={theme.colors.primary}
             color={theme.colors.gray[300]}
             background={theme.colors.white}
-            placeholder='비밀번호를 입력해주세요'
+            placeholder="비밀번호를 입력해주세요"
             {...register('password', {
               required: '비밀번호를 입력해주세요',
               minLength: {
@@ -120,13 +120,13 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
                 message: '비밀번호는 8자 이상이어야 합니다',
               },
             })}
-            type='password'
+            type="password"
           />
           <StyledFormErrorMessage>{errors.password?.message}</StyledFormErrorMessage>
         </StyledFormControl>
 
         <StyledLoginButtonDiv>
-          <LoginButton text='로그인' onClick={handleSubmit(handleFormSubmit)} />
+          <LoginButton text="로그인" onClick={handleSubmit(handleFormSubmit)} />
         </StyledLoginButtonDiv>
       </StyledStack>
     </FormWrapper>

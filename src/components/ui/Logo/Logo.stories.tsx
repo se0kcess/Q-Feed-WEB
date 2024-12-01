@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Logo } from './Logo';
 
 const meta: Meta<typeof Logo> = {
-  title: 'Components/Logo',
+  title: 'Components/ui/Logo',
   component: Logo,
   tags: ['autodocs'],
   argTypes: {
@@ -29,7 +29,6 @@ export const Default: Story = {
   },
 };
 
-
 // 문자열 단위를 사용한 로고
 export const WithStringUnits: Story = {
   args: {
@@ -37,4 +36,3 @@ export const WithStringUnits: Story = {
     height: '4rem',
   },
 };
-
