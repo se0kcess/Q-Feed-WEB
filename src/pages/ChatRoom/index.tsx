@@ -73,7 +73,6 @@ const ChatRoom: React.FC = () => {
         {messages.map((msg) => (
           <div key={msg.id} css={msg.isMine ? myMessageStyle : otherMessageStyle}>
             {!msg.isMine && <ProfileImageCon src="" size={30} />}
-            {/* 삼항연산자로 메시지 구조 분리 */}
             {msg.isMine ? (
               <>
                 <span css={timeStyleLeft}>{msg.time}</span>

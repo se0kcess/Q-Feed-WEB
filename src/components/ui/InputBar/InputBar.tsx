@@ -15,7 +15,11 @@ const SearchInput: React.FC<SearchInputProps> = ({
   const [value, setValue] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    const newValue = e.target.value;
+    setValue(newValue);
+    if (onSearch) {
+      onSearch(newValue);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
