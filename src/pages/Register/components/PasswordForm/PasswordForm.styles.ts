@@ -22,7 +22,6 @@ export const StyledInput = styled(Input)`
 `;
 
 export const StyledStack = styled(Stack)`
-  align: flex-start;
   width: 100%;
   max-width: ${STYLES.FORM.MAX_WIDTH};
 `;
@@ -30,7 +29,6 @@ export const StyledStack = styled(Stack)`
 export const StyledFormControl = styled(FormControl)`
   height: ${STYLES.FORM.CONTROL_HEIGHT};
   position: relative;
-  margin-bottom: ${STYLES.FORM.MARGIN_BOTTOM};
 `;
 
 export const StyledFormErrorMessage = styled(FormErrorMessage)`

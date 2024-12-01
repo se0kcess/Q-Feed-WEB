@@ -1,4 +1,4 @@
-import { StyledButton } from '@/pages/Login/LoginButton/LoginButton.styles';
+import { StyledButton } from '@/pages/Login/components/LoginButton/LoginButton.styles';
 import theme from '@/styles/theme';
 
 type LoginButtonProps = {
@@ -14,9 +14,7 @@ const LoginButton = ({ text, width = '100%', onClick }: LoginButtonProps) => {
       width={width}
       onClick={onClick}
       _hover={{
-        backgroundColor: theme.colors.primary,
-        opacity: 0.7,
-        color: theme.colors.black,
+        backgroundColor: theme.colors.gray[300],
       }}
     >
       {text}
