@@ -9,7 +9,7 @@ interface SearchInputProps {
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
-  placeholder = '사용자의 닉네임을 검색해보세요.', // 기본 플레이스홀더
+  placeholder = '사용자의 닉네임을 검색해보세요.',
   onSearch,
 }) => {
   const [value, setValue] = useState('');
@@ -69,9 +69,11 @@ const inputStyle = css`
   font-size: 16px;
   border: none;
   outline: none;
-
   &:focus {
     border-color: none;
+  }
+  &::placeholder {
+    color: #bab0b1;
   }
 `;
 

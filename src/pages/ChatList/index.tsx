@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import ProfileImageCon from '../../components/ui/ProfileImageCon/ProfileImageCon';
 import InputBar from '../../components/ui/InputBar/InputBar';
 import Header from '@/components/common/Header';
+import theme from '@/styles/theme';
 interface ChatItemProps {
   id: string; // 채팅방 ID
   profileImg?: string; // 프로필 이미지 URL
@@ -107,8 +108,7 @@ const chatListContainerStyle = css`
 `;
 const chatListStyle = css`
   height: 100vh;
-  background-color: #f9f3ec;
-
+  background-color: ${theme.colors.background};
   border-bottom: 1px solid #ccc;
 `;
 
@@ -120,7 +120,7 @@ const chatItemStyle = css`
   cursor: pointer;
 
   &:hover {
-    background-color: #f0e8dc;
+    background-color: ${theme.colors.sub};
   }
 `;
 
@@ -137,7 +137,7 @@ const userNameStyle = css`
 `;
 
 const timeStyle = css`
-  color: #999;
+  color: ${theme.colors.gray[300]};
   font-size: 12px;
 `;
 
@@ -145,13 +145,13 @@ const lastMessageStyle = css`
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  color: #666;
+  color: ${theme.colors.gray[500]};
   margin-top: 4px;
 `;
 
 const unreadCountStyle = css`
-  background-color: #ff4d4f;
-  color: #fff;
+  background-color: ${theme.colors.notice};
+  color: ${theme.colors.white};
   font-size: 10px;
   padding: 2px 6px;
   border-radius: 12px;

@@ -8,6 +8,7 @@ import { HiOutlineBell } from 'react-icons/hi2';
 import { HiOutlineBellSlash } from 'react-icons/hi2';
 import { IoChevronBack } from 'react-icons/io5';
 import ChatInputBar from '@/pages/ChatRoom/component/InputBar';
+import theme from '@/styles/theme';
 
 const ChatRoom: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -126,7 +127,7 @@ const headerStyle = css`
   align-items: center;
   justify-content: space-between;
   padding: 10px 15px;
-  background-color: #ffffff;
+  background-color: ${theme.colors.white};
   border-bottom: 1px solid #e0e0e0;
 `;
 
@@ -144,7 +145,7 @@ const messageListStyle = css`
   flex: 1;
   padding: 10px;
   overflow-y: auto;
-  background-color: #f9f3ec;
+  background-color: ${theme.colors.background};
 `;
 
 const otherMessageStyle = css`
@@ -163,7 +164,7 @@ const myMessageStyle = css`
 
 const messageContentStyle = css`
   max-width: 70%;
-  background-color: #ffffff;
+  background-color: ${theme.colors.white};
   border-radius: 10px;
   padding: 10px;
   font-size: 14px;
@@ -172,14 +173,14 @@ const messageContentStyle = css`
 
 const timeStyleLeft = css`
   font-size: 12px;
-  color: #999999;
+  color: ${theme.colors.gray[500]};
   align-self: flex-end;
   margin-left: 10px; /* 메시지와 시간 간 간격 */
 `;
 
 const timeStyleRight = css`
   font-size: 12px;
-  color: #999999;
+  color: ${theme.colors.gray[500]};
   align-self: flex-end;
   margin-right: 10px; /* 메시지와 시간 간 간격 */
 `;

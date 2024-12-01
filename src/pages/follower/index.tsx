@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoChevronBack } from 'react-icons/io5';
 import ProfileImageCon from '@/components/ui/ProfileImageCon/ProfileImageCon';
+import theme from '@/styles/theme';
 
 const FollowerFollowingPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('follower'); // "follower" or "following"
@@ -113,7 +114,7 @@ const containerStyle = css`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #f9f4ef;
+  background-color: ${theme.colors.background};
 `;
 
 const headerStyle = css`
@@ -121,7 +122,7 @@ const headerStyle = css`
   display: flex;
   align-items: center;
   padding: 16px 8px;
-  background-color: #ffffff;
+  background-color: ${theme.colors.white};
   border-bottom: 1px solid #ccc;
 `;
 
@@ -142,14 +143,14 @@ const tabStyle = css`
   text-align: center;
   font-size: 16px;
   cursor: pointer;
-  background-color: #f9f4ef;
+  background-color: ${theme.colors.white};
   border: none;
   border-bottom: 2px solid transparent;
 `;
 
 const activeTabStyle = css`
   font-weight: bold;
-  border-bottom: 2px solid #b9a298;
+  border-bottom: 2px solid ${theme.colors.primary};
 `;
 
 const listContainerStyle = css`
@@ -178,8 +179,8 @@ const buttonGroupStyle = css`
 `;
 
 const ButtonStyle = css`
-  background-color: #ffffff;
-  color: #9d6f70;
+  background-color: ${theme.colors.white};
+  color: ${theme.colors.primary};
   border: none;
   border-radius: 16px;
   padding: 6px 12px;
