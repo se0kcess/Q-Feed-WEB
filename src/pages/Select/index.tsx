@@ -1,11 +1,14 @@
 import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 import { Logo } from '@/components/ui/Logo/Logo';
 import CategorySelectContainer from '@/components/ui/CategorySelectContainer/CategorySelectContainer';
 import theme from '@/styles/theme';
 
 const SelectPage = () => {
+  const navigate = useNavigate();
   const handleCategorySelect = (categoryId: string) => {
-    alert(`선택한 카테고리(${categoryId}) 페이지 이동`);
+    //질문에 답했는데 확인 로직 추가
+    navigate(`/question/${categoryId}`);
   };
 
   return (
