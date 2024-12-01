@@ -4,7 +4,6 @@ import theme from '@/styles/theme';
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void; // 클릭 이벤트 핸들러
-  variant?: 'primary' | 'secondary'; // 버튼 스타일 타입
 }
 
 const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
