@@ -13,6 +13,7 @@ import ChatRoom from '@/pages/ChatRoom';
 import QSpaceDetailPage from '@/pages/QSpaceDetail';
 import QuestionPage from '@/pages/Question';
 import SelectPage from '@/pages/Select';
+import ProfilePage from '@/pages/Profile';
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: '/select',
         element: <SelectPage />,
+      },
+      {
+        path: '/profile/:id',
+        element: <ProfilePage />,
       },
     ],
   },
