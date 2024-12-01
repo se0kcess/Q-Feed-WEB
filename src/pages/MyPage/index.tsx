@@ -1,11 +1,18 @@
 import { useState } from 'react';
-import styled from '@emotion/styled';
 import Header from '@/pages/MyPage/components/Header';
 import QuestionCard from '@/pages/MyPage/components/QuestionCard';
-import theme from '@/styles/theme';
 import Button from '@/pages/MyPage/components/Button';
 import MyProfile from '@/pages/MyPage/components/MyProfile';
 import QSpaceCard from '@/components/ui/QSpaceCard/QSpaceCard';
+import {
+  ButtonGroup,
+  Container,
+  Content,
+  QSpaceList,
+  QuestionList,
+  Tab,
+  TabContainer,
+} from '@/pages/MyPage/styles';
 
 // 더미 데이터
 const dummyProfile = {
@@ -102,59 +109,5 @@ const MyPage = () => {
     </>
   );
 };
-
-const Container = styled.div`
-  padding: 1.5rem 1rem;
-  background-color: ${theme.colors.background};
-  min-height: calc(100vh - 8rem);
-  margin-bottom: 5.25rem;
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
-`;
-
-const TabContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #ddd;
-`;
-
-const Tab = styled.button<{ isActive: boolean }>`
-  flex: 1;
-  padding: 0.75rem;
-  font-size: 1.125rem;
-  font-weight: bold;
-  background: none;
-  border: none;
-  border-bottom: ${({ isActive }) => (isActive ? `2px solid ${theme.colors.primary}` : 'none')};
-  color: ${({ isActive }) => (isActive ? theme.colors.primary : theme.colors.gray[300])};
-  font-family: ${theme.typography.fontFamily.korean};
-  cursor: pointer;
-
-  &:hover {
-    color: #b07d87;
-  }
-`;
-
-const Content = styled.div`
-  padding: 1rem 0;
-`;
-
-const QuestionList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const QSpaceList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
 
 export default MyPage;

@@ -1,10 +1,19 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProfileImageCon from '../../components/ui/ProfileImageCon/ProfileImageCon';
 import InputBar from '../../components/ui/InputBar/InputBar';
 import Header from '@/components/common/Header';
+import {
+  chatContentStyle,
+  chatItemStyle,
+  chatListContainerStyle,
+  chatListStyle,
+  lastMessageStyle,
+  timeStyle,
+  unreadCountStyle,
+  userNameStyle,
+} from '@/pages/ChatList/styles';
 interface ChatItemProps {
   id: string; // 채팅방 ID
   profileImg?: string; // 프로필 이미지 URL
@@ -15,14 +24,7 @@ interface ChatItemProps {
 }
 
 // 채팅 리스트 아이템 컴포넌트
-const ChatItem: React.FC<ChatItemProps> = ({
-  id,
-  profileImg,
-  userName,
-  lastMessage,
-  time,
-  unreadCount,
-}) => {
+const ChatItem = ({ id, profileImg, userName, lastMessage, time, unreadCount }: ChatItemProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -47,7 +49,7 @@ const ChatItem: React.FC<ChatItemProps> = ({
 };
 
 // 채팅 리스트 메인 컴포넌트
-const ChatList: React.FC = () => {
+const ChatList = () => {
   const [searchTerm, setSearchTerm] = useState(''); // 검색어 상태
   const [chatData] = useState([
     {
@@ -99,61 +101,3 @@ const ChatList: React.FC = () => {
 };
 
 export default ChatList;
-
-// 스타일 정의
-const chatListContainerStyle = css`
-  padding: 0;
-  height: 773px;
-`;
-const chatListStyle = css`
-  height: 100vh;
-  background-color: #f9f3ec;
-
-  border-bottom: 1px solid #ccc;
-`;
-
-const chatItemStyle = css`
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 0.5px solid #ccc;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f0e8dc;
-  }
-`;
-
-const chatContentStyle = css`
-  flex: 1;
-  margin-left: 10px;
-`;
-
-const userNameStyle = css`
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  font-weight: bold;
-`;
-
-const timeStyle = css`
-  color: #999;
-  font-size: 12px;
-`;
-
-const lastMessageStyle = css`
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: #666;
-  margin-top: 4px;
-`;
-
-const unreadCountStyle = css`
-  background-color: #ff4d4f;
-  color: #fff;
-  font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 12px;
-  margin-left: 5px;
-`;

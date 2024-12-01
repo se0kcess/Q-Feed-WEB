@@ -1,5 +1,5 @@
+import AnswerCard from '@/pages/Main/components/AnswerCard/AnswerCard';
 import type { Meta, StoryObj } from '@storybook/react';
-import { AnswerCard } from './AnswerCard';
 
 const meta: Meta<typeof AnswerCard> = {
   title: 'Pages/Main/Components/AnswerCard',

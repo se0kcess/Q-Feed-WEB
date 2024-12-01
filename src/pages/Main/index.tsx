@@ -1,10 +1,7 @@
 import { useRef, useState } from 'react';
-import styled from '@emotion/styled';
-import theme from '@/styles/theme';
 import CategoryButton from '@/components/ui/CategoryButtons/CategoryButton';
 import Header from '@/components/common/Header';
 import { QuestionCard } from '@/pages/Main/components/QuestionCard/QuestionCard';
-import { AnswerCard } from '@/pages/Main/components/AnswerCard/AnswerCard';
 import { PopularPostSlider } from '@/pages/Main/components/PopularPostSlider/PopularPostSlider';
 import { ProfileSlider } from '@/pages/Main/components/ProfileSlider/ProfileSlider';
 import { CommentList } from '@/components/ui/CommentList/CommentList';
@@ -12,8 +9,19 @@ import { dummyComments } from '@/mocks/dummyComments';
 import { categories } from '@/pages/Main/type/category';
 import { dummyData } from '@/mocks/dummyPosts';
 import { userProfileData } from '@/mocks/dummyUserProfiles';
+import {
+  Body,
+  CategoryList,
+  CategorySection,
+  CommentListWrapper,
+  Container,
+  PostWrapper,
+  ProfileSlideWrapper,
+  Title,
+} from '@/pages/Main/styles';
+import AnswerCard from '@/pages/Main/components/AnswerCard/AnswerCard';
 
-export const Main = () => {
+const Main = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -115,75 +123,3 @@ export const Main = () => {
 };
 
 export default Main;
-
-const Container = styled.div`
-  background: ${theme.colors.background};
-  padding-bottom: 5.25rem; //footer-height
-  min-height: 100vh;
-  position: relative;
-`;
-
-const CategorySection = styled.div`
-  padding: 1rem 0;
-  overflow-x: auto;
-  white-space: nowrap;
-  cursor: grab;
-  user-select: none;
-
-  &:active {
-    cursor: grabbing;
-  }
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-`;
-
-const CategoryList = styled.div`
-  display: flex;
-  gap: 0.5rem;
-  padding: 0 1rem;
-`;
-
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1.25rem;
-  margin-top: 1.25rem;
-  width: 100%;
-  overflow-x: hidden;
-`;
-
-const PostWrapper = styled.div`
-  width: 100%;
-  margin-left: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const ProfileSlideWrapper = styled.div`
-  width: 100%;
-  padding: 0 25px;
-`;
-
-const Title = styled.h1`
-  width: 100%;
-  font-family: ${theme.typography.header1.fontFamily};
-  color: ${theme.colors.primary};
-  font-size: 20px;
-  font-weight: bold;
-  text-align: left;
-`;
-
-const CommentListWrapper = styled.div`
-  width: 100%;
-  padding: 0 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
