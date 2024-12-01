@@ -17,7 +17,7 @@ import {
   TextArea,
   CharacterCount,
   SubmitButton,
-} from './ProfileEdit.styles';
+} from '@/pages/ProfileEdit/styles';
 
 const ProfileEditPage: React.FC = () => {
   const [name, setName] = useState('정주연');
