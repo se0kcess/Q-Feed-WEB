@@ -94,7 +94,7 @@ const ChatRoom: React.FC = () => {
       </div>
 
       {/* Input Bar */}
-      <div>
+      <div css={inputBarStyle}>
         <ChatInputBar
           placeholder="메시지를 입력하세요."
           onSend={handleSendMessage} // 메시지 보내기 핸들러 전달
@@ -133,8 +133,8 @@ const headerStyle = css`
 
 const headerTitle = css`
   margin-left: 10px;
-  font-size: 18px;
-  font-weight: bold;
+  font-family: ${theme.typography.header2.fontFamily.korean};
+  font-size: ${theme.typography.header2.size};
 `;
 const backIconStyle = css`
   font-size: 24px;
@@ -167,7 +167,7 @@ const messageContentStyle = css`
   background-color: ${theme.colors.white};
   border-radius: 10px;
   padding: 10px;
-  font-size: 14px;
+  font-size: 16px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 `;
 
@@ -183,4 +183,7 @@ const timeStyleRight = css`
   color: ${theme.colors.gray[500]};
   align-self: flex-end;
   margin-right: 10px; /* 메시지와 시간 간 간격 */
+`;
+const inputBarStyle = css`
+  margin: 8px;
 `;

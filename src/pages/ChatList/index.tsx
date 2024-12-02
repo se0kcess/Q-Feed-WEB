@@ -111,7 +111,6 @@ const chatListStyle = css`
   background-color: ${theme.colors.background};
   border-bottom: 1px solid #ccc;
 `;
-
 const chatItemStyle = css`
   display: flex;
   align-items: center;
@@ -134,11 +133,13 @@ const userNameStyle = css`
   justify-content: space-between;
   font-size: 14px;
   font-weight: bold;
+  font-family: ${theme.typography.fontFamily.korean};
 `;
 
 const timeStyle = css`
   color: ${theme.colors.gray[300]};
   font-size: 12px;
+  font-family: ${theme.typography.fontFamily.korean};
 `;
 
 const lastMessageStyle = css`
@@ -147,6 +148,7 @@ const lastMessageStyle = css`
   font-size: 12px;
   color: ${theme.colors.gray[500]};
   margin-top: 4px;
+  font-family: ${theme.typography.fontFamily.korean};
 `;
 
 const unreadCountStyle = css`
