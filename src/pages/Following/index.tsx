@@ -15,7 +15,7 @@ import {
   nameStyle,
   tabContainerStyle,
   tabStyle,
-} from '@/pages/Follower/styles';
+} from '@/pages/Following/styles';
 
 const FollowerFollowingPage = () => {
   const navigate = useNavigate();
