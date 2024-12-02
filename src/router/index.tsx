@@ -14,6 +14,7 @@ import QSpaceDetailPage from '@/pages/QSpaceDetail';
 import QuestionPage from '@/pages/Question';
 import SelectPage from '@/pages/Select';
 import ProfilePage from '@/pages/Profile';
+import FollowerFollowingPage from '@/pages/follower';
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: '/profile/:id',
         element: <ProfilePage />,
+      },
+      {
+        path: '/followers',
+        element: <FollowerFollowingPage />,
       },
     ],
   },

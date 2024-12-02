@@ -1,14 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { IoChevronBack } from 'react-icons/io5';
 import ProfileImageCon from '@/components/ui/ProfileImageCon/ProfileImageCon';
 import theme from '@/styles/theme';
 
 const FollowerFollowingPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('follower'); // "follower" or "following"
   const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const initialTab = searchParams.get('tab') || 'follower';
+  const [activeTab, setActiveTab] = useState<'follower' | 'following'>(initialTab as 'following'); // "follower" or "following"
+
   const [followers, setFollowers] = useState([
     { id: 1, name: '백종원', isFollowing: true },
     { id: 2, name: '백종원', isFollowing: false },
@@ -37,6 +41,10 @@ const FollowerFollowingPage: React.FC = () => {
       )
     );
   };
+  const handleTabChange = (tab: 'follower' | 'following') => {
+    setActiveTab(tab);
+    navigate(`/followers?tab=${tab}`);
+  };
 
   return (
     <div css={containerStyle}>
@@ -49,13 +57,13 @@ const FollowerFollowingPage: React.FC = () => {
       <div css={tabContainerStyle}>
         <button
           css={[tabStyle, activeTab === 'follower' && activeTabStyle]}
-          onClick={() => setActiveTab('follower')}
+          onClick={() => handleTabChange('follower')}
         >
           팔로워
         </button>
         <button
           css={[tabStyle, activeTab === 'following' && activeTabStyle]}
-          onClick={() => setActiveTab('following')}
+          onClick={() => handleTabChange('following')}
         >
           팔로잉
         </button>

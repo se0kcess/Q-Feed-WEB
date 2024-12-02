@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import theme from '@/styles/theme';
 import ProfileImage from '@/components/ui/ProfileImageCon/ProfileImageCon';
 import Tags from '@/pages/MyPage/components/Tags';
+import { useNavigate } from 'react-router-dom';
 
 interface MyProfileProps {
   profile: {
@@ -17,7 +18,7 @@ interface MyProfileProps {
 }
 
 const MyProfile: React.FC<MyProfileProps> = ({ profile }) => {
-
+  const navigate = useNavigate();
   return (
     <ProfileSection>
       <ProfileImageWrapper>
@@ -34,11 +35,11 @@ const MyProfile: React.FC<MyProfileProps> = ({ profile }) => {
         </NameAndId>
         <DetailsAndTags>
           <Details>
-            <DetailItem>
+            <DetailItem onClick={() => navigate('/followers?tab=follower')}>
               <DetailLabel>팔로워</DetailLabel>
               <DetailValue>{profile.followers}</DetailValue>
             </DetailItem>
-            <DetailItem>
+            <DetailItem onClick={() => navigate('/followers?tab=following')}>
               <DetailLabel>팔로잉</DetailLabel>
               <DetailValue>{profile.following}</DetailValue>
             </DetailItem>
@@ -105,6 +106,7 @@ const DetailItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 `;
 
 const DetailLabel = styled.span`
