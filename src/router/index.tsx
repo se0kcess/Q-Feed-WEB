@@ -19,6 +19,7 @@ import { RegisterPage } from '@/pages/Register';
 import { PasswordRecoveryPage } from '@/pages/PasswordRecovery';
 import { ResetPasswordPage } from '@/pages/ResetPassword';
 import { IDRecoveryPage } from '@/pages/IDRecovery';
+import QSpaceMemberPage from '@/pages/QSpaceMember';
 import FollowerFollowingPage from '@/pages/follower';
 import EventPage from '@/pages/Event';
 
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: '/qspace/category',
         element: <CategorySelectPage />,
+      },
+      {
+        path: '/qspace/member',
+        element: <QSpaceMemberPage />,
       },
       {
         path: '/qspace/post',
