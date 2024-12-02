@@ -1,12 +1,29 @@
-import styled from '@emotion/styled';
 import theme from '@/styles/theme';
-import Header from '@/pages/MyPage/components/Header';
+import Header from '@/pages/MyPage/components/Header/Header';
 import ProfileImage from '@/components/ui/ProfileImageCon/ProfileImageCon';
 import Button from '@/pages/Profile/components/Button';
 import PopularPostSlider from '@/pages/Main/components/PopularPostSlider/PopularPostSlider';
-import Tags from '@/pages/MyPage/components/Tags';
-import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
-import { FaShare } from "react-icons/fa6";
+import Tags from '@/pages/MyPage/components/Tags/Tags';
+import { IoChatbubbleEllipsesOutline } from 'react-icons/io5';
+import { FaShare } from 'react-icons/fa6';
+import {
+  AnswerCounter,
+  AnswerSection,
+  BioLabel,
+  BioSection,
+  BioText,
+  ButtonGroup,
+  Container,
+  FollowInfo,
+  Id,
+  InfoItem,
+  Name,
+  NameSection,
+  ProfileImageWrapper,
+  ProfileSection,
+  Title,
+  TitleSection,
+} from '@/pages/Profile/styles';
 
 // 더미 데이터
 const dummyProfile = {
@@ -55,20 +72,12 @@ const ProfilePage = () => {
             <Id>({id})</Id>
           </NameSection>
           <ProfileImageWrapper>
-            <ProfileImage
-              src={profileImage}
-              size={200}
-              alt={`${name}의 프로필 이미지`}
-            />
+            <ProfileImage src={profileImage} size={200} alt={`${name}의 프로필 이미지`} />
           </ProfileImageWrapper>
           <Tags tags={tags} />
           <FollowInfo>
-            <InfoItem>
-              {following} following
-            </InfoItem>
-            <InfoItem>
-              {followers} followers
-            </InfoItem>
+            <InfoItem>{following} following</InfoItem>
+            <InfoItem>{followers} followers</InfoItem>
           </FollowInfo>
           <ButtonGroup>
             <Button
@@ -83,13 +92,15 @@ const ProfilePage = () => {
               backgroundColor={theme.colors.white}
               textColor={theme.colors.primary}
             >
-              <IoChatbubbleEllipsesOutline /></Button>
+              <IoChatbubbleEllipsesOutline />
+            </Button>
             <Button
               onClick={() => alert('클릭!')}
               backgroundColor={theme.colors.sub}
               textColor={theme.colors.primary}
             >
-              <FaShare /></Button>
+              <FaShare />
+            </Button>
           </ButtonGroup>
         </ProfileSection>
         <BioSection>
@@ -109,110 +120,3 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
-
-const Container = styled.div`
-  padding: 2.5rem 1rem;
-  background-color: ${theme.colors.background};
-  min-height: calc(100vh - 3rem);
-  margin-bottom: 5.25rem;
-  overflow: hidden;
-`;
-
-const ProfileSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2.625rem;
-`;
-
-const ProfileImageWrapper = styled.div`
-  flex-shrink: 0;
-`;
-
-const NameSection = styled.div`
-  text-align: center;
-`;
-
-const Name = styled.h1`
-  font-size: 2.25rem;
-  font-weight: bold;
-  color: ${theme.colors.primary};
-  font-family: ${theme.typography.fontFamily.korean};
-`;
-
-const Id = styled.span`
-  font-size: 1rem;
-  color: ${theme.colors.primary};
-  font-family: ${theme.typography.fontFamily.english};
-`;
-
-const FollowInfo = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-`;
-
-const InfoItem = styled.div`
- font-family: ${theme.typography.fontFamily.english};
-  font-size: 1rem;
-  gap: 0.5rem;
-  color: ${theme.colors.gray[300]};
-`;
-
-const ButtonGroup = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-`;
-
-
-const BioSection = styled.div`
-  margin-bottom: 2.625rem;
-`;
-
-const BioLabel = styled.h2`
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: ${theme.colors.gray[600]};
-  font-family: ${theme.typography.header1.fontFamily};
-`;
-
-const BioText = styled.p`
-  font-size: 1rem;
-  padding: 1rem;
-  color: ${theme.colors.gray[600]};
-  font-family: ${theme.typography.fontFamily.korean};
-`;
-
-const AnswerSection = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const TitleSection = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-`;
-
-const Title = styled.h1`
-  font-family: ${theme.typography.header1.fontFamily};
-  color: ${theme.colors.primary};
-  font-size: 20px;
-  font-weight: bold;
-  text-align: left;
-`;
-
-const AnswerCounter = styled.span`
-  font-family: ${theme.typography.fontFamily.english};
-  color: ${theme.colors.gray[400]};
-  font-size: 0.75rem;
-  text-align: left;
-  margin-left: 0.3rem;
-`;
-

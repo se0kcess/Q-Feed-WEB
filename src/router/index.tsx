@@ -8,12 +8,17 @@ import CategorySelectPage from '@/pages/QSpacePost/CategorySelectPage';
 import NotificationPage from '@/pages/Alarm';
 import PostGroupPage from '@/pages/QSpacePost/PostGroupPage';
 import { createBrowserRouter } from 'react-router-dom';
-import { LandingPage } from '@/pages/Landing';
 import ChatRoom from '@/pages/ChatRoom';
 import QSpaceDetailPage from '@/pages/QSpaceDetail';
 import QuestionPage from '@/pages/Question';
-import SelectPage from '@/pages/Select';
 import ProfilePage from '@/pages/Profile';
+import LandingPage from '@/pages/Landing';
+import HobbySelectPage from '@/pages/HobbySelect';
+import ProfileEditPage from '@/pages/ProfileEdit';
+import { RegisterPage } from '@/pages/Register';
+import { PasswordRecoveryPage } from '@/pages/PasswordRecovery';
+import { ResetPasswordPage } from '@/pages/ResetPassword';
+import { IDRecoveryPage } from '@/pages/IDRecovery';
 import FollowerFollowingPage from '@/pages/follower';
 
 const router = createBrowserRouter([
@@ -71,11 +76,31 @@ const router = createBrowserRouter([
       },
       {
         path: '/select',
-        element: <SelectPage />,
+        element: <HobbySelectPage />,
       },
       {
         path: '/profile/:id',
         element: <ProfilePage />,
+      },
+      {
+        path: '/profile/edit',
+        element: <ProfileEditPage />,
+      },
+      {
+        path: '/register',
+        element: <RegisterPage />,
+      },
+      {
+        path: '/account-recovery/password',
+        element: <PasswordRecoveryPage />,
+      },
+      {
+        path: '/account-reset/password',
+        element: <ResetPasswordPage />,
+      },
+      {
+        path: '/account-recovery/id',
+        element: <IDRecoveryPage />,
       },
       {
         path: '/followers',

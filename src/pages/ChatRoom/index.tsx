@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import ProfileImageCon from '../../components/ui/ProfileImageCon/ProfileImageCon';
@@ -8,9 +7,23 @@ import { HiOutlineBell } from 'react-icons/hi2';
 import { HiOutlineBellSlash } from 'react-icons/hi2';
 import { IoChevronBack } from 'react-icons/io5';
 import ChatInputBar from '@/pages/ChatRoom/component/InputBar';
-import theme from '@/styles/theme';
+import {
+  backIconStyle,
+  chatRoomContainer,
+  headerStyle,
+  headerTitle,
+  iconButtonStyle,
+  iconStyle,
+  messageContentStyle,
+  messageListStyle,
+  myMessageStyle,
+  otherMessageStyle,
+  timeStyleLeft,
+  timeStyleRight,
+  inputBarStyle,
+} from '@/pages/ChatRoom/styles';
 
-const ChatRoom: React.FC = () => {
+const ChatRoom = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [messages, setMessages] = useState([
@@ -105,85 +118,3 @@ const ChatRoom: React.FC = () => {
 };
 
 export default ChatRoom;
-
-// 스타일 정의
-const iconButtonStyle = css`
-  background: none;
-  border: none;
-  cursor: pointer;
-`;
-
-const iconStyle = css`
-  font-size: 24px;
-`;
-const chatRoomContainer = css`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-`;
-
-const headerStyle = css`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-  background-color: ${theme.colors.white};
-  border-bottom: 1px solid #e0e0e0;
-`;
-
-const headerTitle = css`
-  margin-left: 10px;
-  font-family: ${theme.typography.header2.fontFamily.korean};
-  font-size: ${theme.typography.header2.size};
-`;
-const backIconStyle = css`
-  font-size: 24px;
-  cursor: pointer;
-`;
-
-const messageListStyle = css`
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-  background-color: ${theme.colors.background};
-`;
-
-const otherMessageStyle = css`
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 10px;
-  gap: 10px; /* 프로필 이미지와 메시지 사이 간격 */
-`;
-
-const myMessageStyle = css`
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
-  gap: 10px; /* 메시지와 시간 간 간격 */
-`;
-
-const messageContentStyle = css`
-  max-width: 70%;
-  background-color: ${theme.colors.white};
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 16px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-`;
-
-const timeStyleLeft = css`
-  font-size: 12px;
-  color: ${theme.colors.gray[500]};
-  align-self: flex-end;
-  margin-left: 10px; /* 메시지와 시간 간 간격 */
-`;
-
-const timeStyleRight = css`
-  font-size: 12px;
-  color: ${theme.colors.gray[500]};
-  align-self: flex-end;
-  margin-right: 10px; /* 메시지와 시간 간 간격 */
-`;
-const inputBarStyle = css`
-  margin: 8px;
-`;

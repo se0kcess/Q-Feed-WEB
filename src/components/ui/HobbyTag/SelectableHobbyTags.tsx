@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
-import styled from '@emotion/styled';
-import theme from '@/styles/theme';
+import { useState } from 'react';
+import { Tag, TagContainer } from '@/components/ui/HobbyTag/SelectableHobbyTags.styles';
 
 interface SelectableHobbyTagsProps {
   tags: string[]; // 태그 목록
+  selectedTags?: string[]; // 초기 선택된 태그
   onSelectionChange: (selectedTags: string[]) => void; // 선택된 태그 전달 콜백
 }
 
-export const SelectableHobbyTags: React.FC<SelectableHobbyTagsProps> = ({
+const SelectableHobbyTags = ({
   tags,
+  selectedTags = [],
   onSelectionChange,
-}) => {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+}: SelectableHobbyTagsProps) => {
+  const [selected, setSelected] = useState<string[]>(selectedTags);
 
   const handleTagClick = (tag: string) => {
-    setSelectedTags((prevSelected) => {
+    setSelected((prevSelected) => {
       const isAlreadySelected = prevSelected.includes(tag);
 
       const updatedSelection = isAlreadySelected
@@ -29,7 +30,7 @@ export const SelectableHobbyTags: React.FC<SelectableHobbyTagsProps> = ({
   return (
     <TagContainer>
       {tags.map((tag) => (
-        <Tag key={tag} isSelected={selectedTags.includes(tag)} onClick={() => handleTagClick(tag)}>
+        <Tag key={tag} isSelected={selected.includes(tag)} onClick={() => handleTagClick(tag)}>
           {tag}
         </Tag>
       ))}
@@ -37,26 +38,4 @@ export const SelectableHobbyTags: React.FC<SelectableHobbyTagsProps> = ({
   );
 };
 
-const TagContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-`;
-
-const Tag = styled.button<{ isSelected: boolean }>`
-  padding: 0.5rem 1rem;
-  border-radius: 3.125rem;
-  border: ${({ isSelected }) =>
-    isSelected ? `1px solid ${theme.colors.primary}` : `1px solid ${theme.colors.gray[300]}`};
-  background-color: ${({ isSelected }) => (isSelected ? theme.colors.primary : 'transparent')};
-  color: ${({ isSelected }) => (isSelected ? theme.colors.white : theme.colors.gray[300])};
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    color: ${theme.colors.white};
-    border-color: ${theme.colors.gray[300]};
-    background-color: ${theme.colors.gray[300]};
-  }
-`;
+export default SelectableHobbyTags;

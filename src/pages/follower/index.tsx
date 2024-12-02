@@ -1,10 +1,21 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { IoChevronBack } from 'react-icons/io5';
 import ProfileImageCon from '@/components/ui/ProfileImageCon/ProfileImageCon';
-import theme from '@/styles/theme';
+import {
+  activeTabStyle,
+  backIconStyle,
+  buttonGroupStyle,
+  ButtonStyle,
+  containerStyle,
+  headerStyle,
+  listContainerStyle,
+  listItemStyle,
+  nameStyle,
+  tabContainerStyle,
+  tabStyle,
+} from '@/pages/follower/styles';
 
 const FollowerFollowingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -116,82 +127,3 @@ const FollowerFollowingPage: React.FC = () => {
 };
 
 export default FollowerFollowingPage;
-
-// 스타일 정의
-const containerStyle = css`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-color: ${theme.colors.background};
-`;
-
-const headerStyle = css`
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 16px 8px;
-  background-color: ${theme.colors.white};
-  border-bottom: 1px solid #ccc;
-`;
-
-const backIconStyle = css`
-  font-size: 24px;
-  cursor: pointer;
-  position: absolute;
-`;
-
-const tabContainerStyle = css`
-  display: flex;
-  border-bottom: 1px solid #e0e0e0;
-`;
-
-const tabStyle = css`
-  flex: 1;
-  padding: 10px;
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: ${theme.colors.white};
-  border: none;
-  border-bottom: 2px solid transparent;
-`;
-
-const activeTabStyle = css`
-  font-weight: bold;
-  border-bottom: 2px solid ${theme.colors.primary};
-`;
-
-const listContainerStyle = css`
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-`;
-
-const listItemStyle = css`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #e0e0e0;
-`;
-
-const nameStyle = css`
-  margin-left: 10px;
-  font-size: 16px;
-  flex: 1;
-`;
-
-const buttonGroupStyle = css`
-  display: flex;
-  gap: 8px;
-`;
-
-const ButtonStyle = css`
-  background-color: ${theme.colors.white};
-  color: ${theme.colors.primary};
-  border: none;
-  border-radius: 16px;
-  padding: 6px 12px;
-  font-size: 14px;
-  cursor: pointer;
-`;
