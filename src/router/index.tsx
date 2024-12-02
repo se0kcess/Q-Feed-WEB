@@ -22,6 +22,7 @@ import { ResetPasswordPage } from '@/pages/ResetPassword';
 import { IDRecoveryPage } from '@/pages/IDRecovery';
 import QSpaceMemberPage from '@/pages/QSpaceMember';
 import EventPage from '@/pages/Event';
+import SearchResultPage from '@/pages/Search';
 import FollowerFollowingPage from '@/pages/Following';
 
 const router = createBrowserRouter([
@@ -120,6 +121,10 @@ const router = createBrowserRouter([
       {
         path: '/event',
         element: <EventPage />,
+      },
+      {
+        path: '/search',
+        element: <SearchResultPage />, // 검색 결과 페이지 컴포넌트
       },
     ],
   },
