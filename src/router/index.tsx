@@ -20,6 +20,7 @@ import { PasswordRecoveryPage } from '@/pages/PasswordRecovery';
 import { ResetPasswordPage } from '@/pages/ResetPassword';
 import { IDRecoveryPage } from '@/pages/IDRecovery';
 import FollowerFollowingPage from '@/pages/follower';
+import EventPage from '@/pages/Event';
 
 const router = createBrowserRouter([
   {
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: '/followers',
         element: <FollowerFollowingPage />,
+      },
+      {
+        path: '/event',
+        element: <EventPage />,
       },
     ],
   },
