@@ -15,7 +15,7 @@ import {
   nameStyle,
   tabContainerStyle,
   tabStyle,
-} from '@/pages/follower/styles';
+} from '@/pages/Follower/styles';
 
 const FollowerFollowingPage: React.FC = () => {
   const navigate = useNavigate();
