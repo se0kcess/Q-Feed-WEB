@@ -4,7 +4,6 @@ import theme from '@/styles/theme';
 import BackButton from '@/components/ui/BackButton/BackButton';
 import { ImageUpload } from '@/components/ui/ImageUpload/ImageUpload';
 import {
-  ButtonWrapper,
   CharCount,
   Container,
   Content,
@@ -13,17 +12,20 @@ import {
   InputWrapper,
   Label,
 } from '@/pages/QSpacePost/PostGroupPage.styles';
+import { useNavigate } from 'react-router';
 
 const PostGroupPage = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const navigate = useNavigate();
 
   const handleCreateGroup = () => {
-    console.log('Create group:', { title, description, imageFile });
+    navigate('/qspace');
   };
 
   const handleImageUpload = (file: File | null) => {
+    console.log('Uploading image:', imageFile);
     setImageFile(file);
   };
 
@@ -68,18 +70,16 @@ const PostGroupPage = () => {
           <ImageUpload onImageUpload={handleImageUpload} />
         </InputWrapper>
 
-        <ButtonWrapper>
-          <CreateButton
-            colorScheme="none"
-            bg={theme.colors.primary}
-            color="white"
-            width="100%"
-            height="3.5rem"
-            onClick={handleCreateGroup}
-          >
-            방 만들기
-          </CreateButton>
-        </ButtonWrapper>
+        <CreateButton
+          colorScheme="none"
+          bg={theme.colors.primary}
+          color="white"
+          width="100%"
+          height="3.5rem"
+          onClick={handleCreateGroup}
+        >
+          방 만들기
+        </CreateButton>
       </Content>
     </Container>
   );

@@ -10,19 +10,18 @@ import {
 import theme from '@/styles/theme';
 import { Button } from '@chakra-ui/react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const CategorySelectPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleCategorySelect = (categoryId: string) => {
     setSelectedCategory(categoryId);
   };
 
   const handleNext = () => {
-    if (selectedCategory) {
-      // 다음 단계 처리 로직
-      console.log('Selected category:', selectedCategory);
-    }
+    navigate('/qspace/post');
   };
 
   return (
