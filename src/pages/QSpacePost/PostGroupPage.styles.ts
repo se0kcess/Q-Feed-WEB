@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   background-color: ${theme.colors.background};
-  min-height: calc(100vh - 5rem); // Footer 높이 5rem 제외
-  padding-bottom: 5rem; // Footer 높이만큼 padding
+  padding-bottom: 6rem;
+  position: relative;
 `;
 
 export const Header = styled.header`
@@ -43,17 +43,7 @@ export const CharCount = styled.span`
   color: ${theme.colors.gray[400]};
 `;
 
-export const ButtonWrapper = styled.div`
-  position: fixed;
-  bottom: 5rem; // Footer 높이만큼 띄우기
-  left: 1rem;
-  right: 1rem;
-  padding: 1rem 0;
-  background-color: ${theme.colors.background};
-`;
-
 export const CreateButton = styled(Button)`
-  width: 100%;
-  margin-bottom: 1rem;
+  bottom: 0;
   border-radius: 1rem;
 `;
