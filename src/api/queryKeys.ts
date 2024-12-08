@@ -9,6 +9,10 @@ export const GROUP_KEYS = {
     LIST: 'list',
     DETAIL: 'detail',
     ACTIVITIES: 'activities',
+    MEMBERS: 'members',
+    COMMENTS: 'comments',
+    JOIN: 'join',
+    LEAVE: 'leave',
   },
   CATEGORIES: {
     ALL: 0,
