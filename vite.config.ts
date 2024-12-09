@@ -7,10 +7,16 @@ import * as path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: ['@emotion/babel-plugin'],
+      },
+    }),
     svgr(),
     VitePWA({
       registerType: 'prompt',
+      includeAssets: ['favicon.ico'],
       injectRegister: false,
 
       pwaAssets: {
@@ -42,6 +48,24 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+    },
+  },
+  server: {
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+    },
+    proxy: {
+      '/api': {
+        target: 'https://q-feed.n-e.kr',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/ws': {
+        target: 'wss://q-feed.n-e.kr/ws', // WebSocket 서버 URL
+        ws: true, // WebSocket 프록시 활성화
+        changeOrigin: true,
+      },
     },
   },
 });
