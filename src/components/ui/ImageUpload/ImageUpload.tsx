@@ -1,3 +1,4 @@
+// ImageUpload.tsx
 import { useState } from 'react';
 import { LuImagePlus, LuImageOff } from 'react-icons/lu';
 import theme from '@/styles/theme';
@@ -9,7 +10,8 @@ import {
   PreviewImage,
   RemoveOverlay,
   UploadBox,
-} from '@/components/ui/ImageUpload/ImageUpload.styles';
+} from './ImageUpload.styles';
+import { AllowedImageType, FILE_LIMITS } from '@/constants/fileLimits';
 
 interface ImageUploadProps {
   onImageUpload?: (file: File | null) => void;
@@ -20,21 +22,19 @@ interface ImageUploadProps {
 export const ImageUpload = ({
   onImageUpload,
   accept = 'image/*',
-  maxSize = 5 * 1024 * 1024,
+  maxSize = FILE_LIMITS.IMAGE.MAX_SIZE,
 }: ImageUploadProps) => {
   const [preview, setPreview] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-
   const processFile = (file: File) => {
-    if (!validImageTypes.includes(file.type)) {
-      setError('이미지 파일(JPEG, PNG, GIF, WEBP)만 허용됩니다.');
+    if (!FILE_LIMITS.IMAGE.ALLOWED_TYPES.includes(file.type as AllowedImageType)) {
+      setError(FILE_LIMITS.IMAGE.ERROR_MESSAGES.INVALID_TYPE);
       return;
     }
 
     if (file.size > maxSize) {
-      setError(`파일 크기는 ${Math.floor(maxSize / (1024 * 1024))}MB 이하여야 합니다.`);
+      setError(FILE_LIMITS.IMAGE.ERROR_MESSAGES.SIZE_EXCEEDED);
       return;
     }
 
