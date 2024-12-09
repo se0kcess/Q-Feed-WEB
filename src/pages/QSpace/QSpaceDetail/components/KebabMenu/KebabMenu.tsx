@@ -36,9 +36,9 @@ const KebabMenu = ({ onEditClick, onDeleteClick, groupId, isOpen = true }: Kebab
   };
 
   const handleEdit = () => {
-    navigate(`/qspace/${groupId}/edit`);
     onEditClick();
     setIsMenuOpen(false);
+    navigate(`/qspace/${groupId}/edit`);
   };
 
   const handleDelete = () => {
