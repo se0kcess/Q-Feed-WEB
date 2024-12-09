@@ -114,17 +114,7 @@ export const useDeleteGroup = (groupId: number) => {
         duration: 3000,
       });
 
-      // 목록 페이지로 리다이렉트
-      navigate('/groups');
-    },
-    onError: (error: Error) => {
-      // 에러 메시지 표시
-      toast({
-        title: '토론방 삭제 실패',
-        description: error.message,
-        status: 'error',
-        duration: 3000,
-      });
+      navigate('/qspace');
     },
   });
 };
