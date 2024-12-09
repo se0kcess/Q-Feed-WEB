@@ -34,6 +34,8 @@ const PostGroupPage = ({ mode = 'create', initialData }: PostGroupPageProps) => 
 
   const handlePostGroup = () => {
     const form = new FormData();
+    console.log('imageFile:', formData.imageFile);
+
     form.append('groupName', title);
     form.append('description', description);
     form.append('categoryId', formData.categoryId.toString());
@@ -41,6 +43,10 @@ const PostGroupPage = ({ mode = 'create', initialData }: PostGroupPageProps) => 
 
     if (formData.imageFile) {
       form.append('file', formData.imageFile);
+      console.log(
+        'Form after file append:',
+        Array.from(form.entries()).map(([key, value]) => [key, value])
+      );
     }
 
     if (mode === 'edit' && updateGroupMutation) {
