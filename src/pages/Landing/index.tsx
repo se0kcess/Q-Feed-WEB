@@ -1,10 +1,18 @@
 import { Logo } from '@/components/ui/Logo/Logo';
 import { STYLE } from '@/pages/Landing/Constants/style';
 import { Container, LogoWrapper, SubTitle, Title } from '@/pages/Landing/styles';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/login');
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
   const handleClick = () => {
     navigate('/login');
   };

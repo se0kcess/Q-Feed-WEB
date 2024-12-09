@@ -8,7 +8,7 @@ interface CookieOptions {
 }
 
 const defaultOptions: CookieOptions = {
-  path: '/',
+  path: '/main',
   secure: process.env.NODE_ENV === 'production',
   sameSite: 'strict',
 };
