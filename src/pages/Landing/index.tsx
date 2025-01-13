@@ -2,19 +2,20 @@ import { Logo } from '@/components/ui/Logo/Logo';
 import { STYLE } from '@/pages/Landing/Constants/style';
 import { Container, LogoWrapper, SubTitle, Title } from '@/pages/Landing/styles';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigation } from '@/hooks/useNavigation';
 
 const LandingPage = () => {
-  const navigate = useNavigate();
+  const { gotoLogin } = useNavigation();
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate('/login');
+      gotoLogin();
     }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
   const handleClick = () => {
-    navigate('/login');
+    gotoLogin();
   };
 
   return (

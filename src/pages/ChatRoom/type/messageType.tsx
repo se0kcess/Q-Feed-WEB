@@ -3,10 +3,11 @@ export interface MessageType {
   content: string;
   createdAt: string;
   isRead: boolean;
-  type: string;
+  type: 'TEXT' | 'IMAGE';
   url: string | null;
   userId: string;
   userNickName: string;
   userProfileImage: string;
   isMine: boolean;
+  senderId: string;
 }

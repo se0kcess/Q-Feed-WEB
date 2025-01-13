@@ -5,6 +5,9 @@ export const messageAPI = {
   // 특정 채팅방 메시지 가져오기
   getMessages: (chatRoomId: string) =>
     apiClient.get<MessageType[]>(`/chats/${chatRoomId}/messages`),
+
+  // 특정 채팅방 메시지 읽음 처리
+  markAsRead: (chatRoomId: string) => apiClient.put(`/chats/${chatRoomId}/markasread`),
 };
 
 export const fetchMessages = async (chatRoomId: string): Promise<MessageType[]> => {
@@ -15,5 +18,18 @@ export const fetchMessages = async (chatRoomId: string): Promise<MessageType[]> 
   } catch (error) {
     console.error('메시지 조회 중 오류 발생: ', error); // 에러 확인
     return [];
+  }
+};
+
+export const markAsRead = async (chatRoomId: string): Promise<void> => {
+  try {
+    const response = await messageAPI.markAsRead(chatRoomId);
+    if (response.status === 200) {
+      console.log('읽음 처리 완료');
+    } else {
+      console.error('읽음 처리 실패', response);
+    }
+  } catch (error) {
+    console.error('읽음 처리 중 오류 발생:', error);
   }
 };

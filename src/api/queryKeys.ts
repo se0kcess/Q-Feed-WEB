@@ -47,6 +47,7 @@ export const AUTH_KEYS = {
     LOGOUT: 'logout',
     REGISTER: 'register',
     REFRESH: 'refresh',
+    RESETPASSWORD: 'resetpassword',
   },
 } as const;
 
@@ -55,6 +56,7 @@ export const POST_KEYS = {
   ACTIONS: {
     Question: 'question',
     DETAIL: 'detail',
+    AddComment: 'addcomment',
   },
 } as const;
 
@@ -63,5 +65,10 @@ export const FEED_KEYS = {
   ACTIONS: {
     Answers: 'answer',
     MyAnswer: 'myanswer',
+    FeedAnswers: 'feeds',
+    UserRecommendation: 'users',
+    TrendPosts: 'trend',
+    FeedList: 'feedList',
+    Delete: 'delete',
   },
 } as const;
