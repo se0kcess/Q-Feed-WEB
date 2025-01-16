@@ -1,4 +1,4 @@
-import React from 'react';
+import { useMemo } from 'react';
 import Header from '@/components/common/Header';
 import { QuestionCard } from '@/pages/Main/components/QuestionCard/QuestionCard';
 import { PopularPostSlider } from '@/pages/Main/components/PopularPostSlider/PopularPostSlider';
@@ -56,7 +56,7 @@ const Main = () => {
     categoryId: CATEGORY_QUESTION_MAP[activeCategory] || 1,
   });
 
-  const flattenedComments = React.useMemo(() => {
+  const flattenedComments = useMemo(() => {
     if (hasNextPage) {
       fetchNextPage();
     }
@@ -183,6 +183,7 @@ const Main = () => {
           myAnswer?.answerContent &&
           myAnswer.answerId && (
             <AnswerCard
+              category={activeCategory}
               answer={myAnswer?.answerContent || `${activeCategory}에 대한 나의 답변`}
               answerId={myAnswer?.answerId.toString()}
             />

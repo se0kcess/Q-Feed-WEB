@@ -19,10 +19,12 @@ import {
 import ReplyContainer from '@/components/ui/ReplyContainer/ReplyContainer';
 import { PostComments } from '@/pages/AnswerDetail/type/postType';
 import { formatLastUpdated } from '@/utils/formatLastUpdated';
+import { useNavigation } from '@/hooks/useNavigation';
 
 type CommentItemProps = {
   commentId: number;
   profileImage: string;
+  userId: string;
   nickName: string;
   content: string;
   createdAt: string;
@@ -33,7 +35,7 @@ type CommentItemProps = {
   onLikeComment?: (commentId: string, isLiked: boolean, count: number) => void;
   onReplyClick?: (commentId: string) => void;
   onClick?: (commentId: string) => void;
-  onClickProfile?: () => void;
+  onClickProfile?: (userId: string) => void;
   depth?: number;
   isCommentButtonExist?: boolean;
   onClikcProfile?: (commentId: string) => void;
@@ -42,6 +44,7 @@ type CommentItemProps = {
 export const CommentItem = ({
   commentId,
   profileImage,
+  userId,
   nickName,
   content,
   createdAt,
@@ -52,11 +55,15 @@ export const CommentItem = ({
   onLikeComment,
   onReplyClick,
   onClick,
-  onClickProfile,
   depth = 0,
   isCommentButtonExist = false,
 }: CommentItemProps) => {
   const [showReplies, setShowReplies] = useState(false);
+  const { gotoProfilePage } = useNavigation();
+
+  const clickProfile = () => {
+    gotoProfilePage(userId);
+  };
 
   return (
     <CommentWrapper hideBorder={true}>
@@ -66,7 +73,7 @@ export const CommentItem = ({
           crossOrigin="anonymous"
           name={nickName}
           size="sm"
-          onClick={onClickProfile}
+          onClick={clickProfile}
         />
         <CommentContent>
           <AuthorInfo>
